@@ -1,0 +1,16 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  width: 480px;
+}
+.btn {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(43, 148, 197);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.form {
+  margin-left: 10px;
+}

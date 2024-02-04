@@ -1,0 +1,6 @@
+.btnDelete {
+  margin-left: 10px;
+}
+.btnDelete:hover {
+  cursor: pointer;
+}
