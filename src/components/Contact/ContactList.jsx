@@ -1,8 +1,11 @@
-import css from './contact.module.css';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Contact from './Contact.jsx';
 
 export default class ContactList extends Component {
+  constructor(props) {
+    super(props);
+  }
   removeClick(id) {
     this.props.remove(id);
   }
@@ -12,16 +15,11 @@ export default class ContactList extends Component {
         <ul>
           {this.props.contacts.map(contact => {
             return (
-              <li key={contact.id}>
-                <span>{contact.name}</span>:&nbsp;
-                <span>{contact.number}</span>
-                <button
-                  className={css.btnDelete}
-                  onClick={this.removeClick.bind(this, contact.id)}
-                >
-                  delete
-                </button>
-              </li>
+              <Contact
+                contact={contact}
+                remove={this.props.remove}
+                key={contact.id}
+              ></Contact>
             );
           })}
         </ul>

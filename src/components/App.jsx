@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import Form from './form.jsx';
-import ContactList from './contact_list.jsx';
-import Filter from './filter.jsx';
+import Form from './Form/Form.jsx';
+import ContactList from './Contact/ContactList.jsx';
+import Filter from './Filter.jsx';
 import { nanoid } from 'nanoid';
 
 export default class App extends Component {
@@ -16,6 +16,12 @@ export default class App extends Component {
     this.addContact = this.addContact.bind(this);
     this.filterList = this.filterList.bind(this);
     this.removeContact = this.removeContact.bind(this);
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('contacts') !== undefined) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    }
   }
 
   addContact(contact) {
@@ -34,9 +40,7 @@ export default class App extends Component {
 
     contacts.push(contact);
 
-    this.setState({
-      contacts: contacts,
-    });
+    this.updateContacts(contacts);
   }
 
   contactList() {
@@ -54,9 +58,17 @@ export default class App extends Component {
   removeContact(id) {
     let contacts = this.state.contacts.filter(el => el.id !== id);
 
+    this.updateContacts(contacts);
+  }
+
+  updateContacts(contacts) {
     this.setState({
       contacts: contacts,
     });
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 
   render() {
