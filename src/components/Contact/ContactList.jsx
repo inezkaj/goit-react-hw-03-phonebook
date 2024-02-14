@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import Contact from './Contact.jsx';
 
 export default class ContactList extends Component {
-  constructor(props) {
-    super(props);
-  }
   removeClick(id) {
     this.props.remove(id);
   }
