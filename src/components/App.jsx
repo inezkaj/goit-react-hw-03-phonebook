@@ -19,7 +19,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('contacts') !== undefined) {
+    if (localStorage.getItem('contacts') !== null) {
       this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
     }
   }
